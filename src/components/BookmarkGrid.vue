@@ -35,12 +35,13 @@ const bookmarks: Bookmark[] = [
   {
     name: 'Google',
     href: 'https://www.google.com/',
-    icon: './images/Google.png'
+    icon: 'src/assets/svg/Google.svg'
   },
   {
+    id: 'ChatGPT',
     name: 'ChatGPT',
     href: 'https://chat.openai.com/',
-    icon: './images/ChatGPT.png'
+    icon: 'src/assets/svg//ChatGPT.svg'
   },
   {
     name: '哔哩哔哩',
@@ -68,7 +69,7 @@ const bookmarks: Bookmark[] = [
     icon: './images/Wikipedia.png'
   },
   {
-    id: 'github',
+    id: 'Github',
     name: 'Github',
     href: 'https://github.com/',
     icon: './github.svg'

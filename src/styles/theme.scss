@@ -80,16 +80,25 @@ $theme-dark: (
 
 /* 用户手动覆盖 */
 html.light-mode {
-  #github {
-    filter: none;
+  #Github {
+    filter: none
+  }
+
+  #ChatGPT {
+    filter: none
   }
 
   @include apply-theme($theme-light);
 }
 
 html.dark-mode {
-  #github {
+  #Github {
     filter: invert(1);
+    pointer-events: none;
+  }
+
+  #ChatGPT {
+    filter: invert(0.9);
     pointer-events: none;
   }
 
