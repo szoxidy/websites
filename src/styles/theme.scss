@@ -34,7 +34,10 @@ $theme-light: (
         url: #000000,
         bar-background: rgba(255, 255, 255, 1),
         bar-shadow: 0 0 18px rgba(70, 70, 40, .255),
-        submit: #000000
+        submit: #000000,
+        bookmark-grid-card-bg: #efefef,
+        bookmark-grid-card-border: rgba(217, 217, 217, 0.1),
+        bookmark-grid-url: #e6e6e6
 );
 
 $theme-dark: (
@@ -43,13 +46,19 @@ $theme-dark: (
         url: rgb(190, 190, 190),
         bar-background: rgba(26, 26, 26, 1),
         bar-shadow: 0 0 18px rgba(255, 255, 255, .30),
-        submit: rgb(197, 197, 210)
+        submit: rgb(197, 197, 210),
+        bookmark-grid-card-bg: #1b1b1b,
+        bookmark-grid-card-border: rgba(38, 38, 38, 0.7),
+        bookmark-grid-url: #e6e6e6
 );
 
 @mixin apply-theme($theme) {
   body {
     background: map.get($theme, background);
     color: map.get($theme, foreground);
+    --bookmark-grid-card-bg: #{map.get($theme, bookmark-grid-card-bg)};
+    --bookmark-grid-card-border: #{map.get($theme, bookmark-grid-card-border)};
+    --bookmark-grid-url-color: #{map.get($theme, bookmark-grid-url)};
   }
 
   input[type="text"],
@@ -81,11 +90,11 @@ $theme-dark: (
 /* 用户手动覆盖 */
 html.light-mode {
   #Github {
-    filter: none
+    filter: drop-shadow(0 0 0.8rem color-mix(in srgb, var(--glow-color) 40%, transparent));
   }
 
   #ChatGPT {
-    filter: none
+    filter: drop-shadow(0 0 0.8rem color-mix(in srgb, var(--glow-color) 40%, transparent));
   }
 
   @include apply-theme($theme-light);
@@ -93,12 +102,12 @@ html.light-mode {
 
 html.dark-mode {
   #Github {
-    filter: invert(1);
+    filter: invert(1) drop-shadow(0 0 0.8rem color-mix(in srgb, var(--glow-color) 80%, transparent));
     pointer-events: none;
   }
 
   #ChatGPT {
-    filter: invert(0.9);
+    filter: invert(1) drop-shadow(0 0 0.8rem color-mix(in srgb, var(--glow-color) 80%, transparent));
     pointer-events: none;
   }
 

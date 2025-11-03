@@ -240,8 +240,8 @@ const secondHalf = computed(() => bookmarks.slice(half))
   width: 72px;
   height: 72px;
   border-radius: 14px;
-  background: #1b1b1b;
-  border: 1px solid rgba(38, 38, 38, 0.7);
+  background: var(--bookmark-grid-card-bg, #1b1b1b);
+  border: 1px solid var(--bookmark-grid-card-border, rgba(38, 38, 38, 0.7));
   transition: transform 0.2s ease;
   overflow: hidden;
   z-index: 0;
@@ -276,7 +276,7 @@ const secondHalf = computed(() => bookmarks.slice(half))
 }
 
 .url {
-  color: #e6e6e6;
+  color: var(--bookmark-grid-url-color, #e6e6e6);
   font-size: 13px;
 }
 </style>
