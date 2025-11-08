@@ -1,7 +1,7 @@
 <template>
   <figure>
     <a class="logo" href="https://google.com" target="_blank">
-      <img class="smaller" :src=GoogleLogo alt="Logo"/>
+      <img class="smaller" :src=GoogleLogo alt="Logo" fetchpriority="high"/>
     </a>
   </figure>
 </template>
