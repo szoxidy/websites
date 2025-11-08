@@ -64,7 +64,7 @@ const bookmarks: Bookmark[] = [
     glowColor: '#d40423'
   },
   {
-    name: '翻译',
+    name: 'Translate',
     href: 'https://translate.google.com',
     icon: './images/Translate.png',
     glowColor: '#4c8cf4'
@@ -76,7 +76,7 @@ const bookmarks: Bookmark[] = [
     glowColor: '#ffb224'
   },
   {
-    name: '维基百科',
+    name: 'Wikipedia',
     href: 'https://zh.wikipedia.org/',
     icon: './images/Wikipedia.png',
     glowColor: '#a3a3a3'

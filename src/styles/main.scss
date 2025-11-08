@@ -28,7 +28,7 @@ html, body {
   width: 100vw;
   overflow: auto;
   text-align: center;
-  font-family: 霞鹜文楷 GB, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
+  font-family: '霞鹜文楷 GB', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
   background: $background-color;
 
   // 隐藏滚动条但保留滚动功能
@@ -182,6 +182,10 @@ header, section, footer, aside, nav, article, figure {
   background-size: 9% 100%;
   -webkit-background-size: 200% 100%;
   background-attachment: fixed;
+}
+
+input, textarea, button, select {
+  font-family: inherit;
 }
 
 @-webkit-keyframes flipInX {
