@@ -25,6 +25,7 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue'
+import {useAssetPreloader} from '@/composables/useAssetPreloader'
 
 interface Bookmark {
   id?: string
@@ -189,6 +190,8 @@ const bookmarks: Bookmark[] = [
     glowColor: '#3fb27f'
   }
 ]
+
+useAssetPreloader(bookmarks.map((bookmark) => bookmark.icon))
 
 const half = Math.ceil(bookmarks.length / 2)
 const firstHalf = computed(() => bookmarks.slice(0, half))
