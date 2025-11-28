@@ -53,6 +53,12 @@ const bookmarks: Bookmark[] = [
     glowColor: '#bcbcbc'
   },
   {
+    name: 'Claude',
+    href: 'https://claude.ai/',
+    icon: './Claude.svg',
+    glowColor: '#d97757'
+  },
+  {
     name: '哔哩哔哩',
     href: 'https://www.bilibili.com/',
     icon: './images/BiliBili.png',
@@ -88,12 +94,6 @@ const bookmarks: Bookmark[] = [
     href: 'https://github.com/',
     icon: './github.svg',
     glowColor: '#6e40c9'
-  },
-  {
-    name: '京东',
-    href: 'https://www.jd.com/',
-    icon: './images/Jingdong.png',
-    glowColor: '#f01414'
   },
   {
     name: '乐回享',
