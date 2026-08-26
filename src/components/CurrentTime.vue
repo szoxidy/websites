@@ -1,19 +1,35 @@
 <template>
   <span id="workBoard">
-    <span id="currentTime"> {{ time }} </span>
+    <time id="currentTime" :datetime="dateTime">{{ time }}</time>
   </span>
-
 </template>
+
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import moment from 'moment-timezone'
 
 const time = ref('')
-let timer: number
+const dateTime = ref('')
+let timer: number | undefined
+
+const formatter = new Intl.DateTimeFormat('zh-CN', {
+  timeZone: 'Asia/Shanghai',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hourCycle: 'h23'
+})
 
 function update() {
-  // 使用 moment-timezone 获取台北时间
-  time.value = moment().tz('Asia/Shanghai').format('YYYY 年 MM 月 DD 日 HH : mm : ss')
+  const now = new Date()
+  const parts = Object.fromEntries(
+    formatter.formatToParts(now).map(({ type, value }) => [type, value])
+  )
+
+  time.value = `${parts.year} 年 ${parts.month} 月 ${parts.day} 日 ${parts.hour} : ${parts.minute} : ${parts.second}`
+  dateTime.value = now.toISOString()
 }
 
 onMounted(() => {
@@ -21,7 +37,9 @@ onMounted(() => {
   timer = window.setInterval(update, 1000)
 })
 
-onUnmounted(() => clearInterval(timer))
+onUnmounted(() => {
+  if (timer !== undefined) window.clearInterval(timer)
+})
 </script>
 <style scoped>
 #workBoard {

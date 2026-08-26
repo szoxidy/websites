@@ -47,7 +47,7 @@
 * **前端框架**: Vue3 (Composition API)
 * **开发语言**: TypeScript
 * **样式处理**: SCSS + TailwindCSS
-* **时间处理**: moment-timezone
+* **时间处理**: 浏览器原生 Intl.DateTimeFormat
 * **工具库**: @vueuse/core
 * **包管理**: pnpm
 

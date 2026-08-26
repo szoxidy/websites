@@ -3,21 +3,64 @@
     <div class="row">
       <div class="box" v-for="bm in firstHalf" :key="bm.name"
            :style="{ '--glow-color': bm.glowColor ?? defaultGlowColor }">
-        <a :href="bm.href" target="_blank" rel="noopener noreferrer"></a>
+        <a
+          :href="bm.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          :aria-label="`${bm.name}（新窗口打开）`"
+        ></a>
         <div class="icon-sweep-light">
-          <img class="icon" :src="bm.icon" :alt="bm.name" :id="bm.id"/>
+          <img
+            v-if="bm.icon"
+            class="icon"
+            :src="bm.icon"
+            :alt="bm.name"
+            :id="bm.id"
+            width="42"
+            height="42"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+          >
+          <span
+            v-else
+            class="icon bookmark-sprite"
+            :style="getSpriteStyle(bm.spriteIndex)"
+            aria-hidden="true"
+          ></span>
         </div>
-        <p class="url" :title="bm.title">{{ bm.name }}</p>
+        <p class="url" :title="bm.title ?? bm.name">{{ bm.name }}</p>
       </div>
     </div>
     <div class="row">
       <div class="box" v-for="bm in secondHalf" :key="bm.name"
            :style="{ '--glow-color': bm.glowColor ?? defaultGlowColor }">
-        <a :href="bm.href" target="_blank" rel="noopener noreferrer"></a>
+        <a
+          :href="bm.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          :aria-label="`${bm.name}（新窗口打开）`"
+        ></a>
         <div class="icon-sweep-light">
-          <img class="icon" :src="bm.icon" :alt="bm.name"/>
+          <img
+            v-if="bm.icon"
+            class="icon"
+            :src="bm.icon"
+            :alt="bm.name"
+            width="42"
+            height="42"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+          >
+          <span
+            v-else
+            class="icon bookmark-sprite"
+            :style="getSpriteStyle(bm.spriteIndex)"
+            aria-hidden="true"
+          ></span>
         </div>
-        <p class="url" :title="bm.title">{{ bm.name }}</p>
+        <p class="url" :title="bm.title ?? bm.name">{{ bm.name }}</p>
       </div>
     </div>
   </div>
@@ -25,18 +68,29 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue'
-import {useAssetPreloader} from '@/composables/useAssetPreloader'
 
 interface Bookmark {
   id?: string
   title?: string
   name: string
   href: string
-  icon: string
+  icon?: string
+  spriteIndex?: number
   glowColor?: string
 }
 
 const defaultGlowColor = '#4c8dff'
+const bookmarkSpriteUrl = `${import.meta.env.BASE_URL}images/bookmarks.png`
+
+function getSpriteStyle(index = 0) {
+  const column = index % 5
+  const row = Math.floor(index / 5)
+
+  return {
+    backgroundImage: `url("${bookmarkSpriteUrl}")`,
+    backgroundPosition: `-${column * 42}px -${row * 42}px`
+  }
+}
 
 const bookmarks: Bookmark[] = [
   {
@@ -61,31 +115,31 @@ const bookmarks: Bookmark[] = [
   {
     name: '哔哩哔哩',
     href: 'https://www.bilibili.com/',
-    icon: './images/BiliBili.png',
+    spriteIndex: 0,
     glowColor: '#f25d8e'
   },
   {
     name: '超星学习通',
     href: 'https://i.chaoxing.com/',
-    icon: './images/LeaningPass.png',
+    spriteIndex: 1,
     glowColor: '#d40423'
   },
   {
     name: 'Translate',
     href: 'https://translate.google.com',
-    icon: './images/Translate.png',
+    spriteIndex: 2,
     glowColor: '#4c8cf4'
   },
   {
     name: '布谷',
     href: 'https://www.bugutv.vip/',
-    icon: './images/CuckooTV.png',
+    spriteIndex: 3,
     glowColor: '#ffb224'
   },
   {
     name: 'Wikipedia',
     href: 'https://zh.wikipedia.org/',
-    icon: './images/Wikipedia.png',
+    spriteIndex: 4,
     glowColor: '#a3a3a3'
   },
   {
@@ -98,100 +152,98 @@ const bookmarks: Bookmark[] = [
   {
     name: '乐回享',
     href: 'https://8lhx.com/',
-    icon: './images/HappyEcho.png',
+    spriteIndex: 5,
     glowColor: '#f3f39f'
   },
   {
     name: 'XDA',
     href: 'https://forum.xda-developers.com/mi-5',
-    icon: './images/XDA.png',
+    spriteIndex: 6,
     glowColor: '#f59714'
   },
   {
     title: 'Tencent Cloud',
     name: 'Tencent Cloud',
     href: 'https://cloud.tencent.com/',
-    icon: './images/TencentCloudLogo.png',
+    spriteIndex: 7,
     glowColor: '#0098ff'
   },
   {
     name: 'Google Mail',
     href: 'https://mail.google.com/',
-    icon: './images/Gmail.png',
+    spriteIndex: 8,
     glowColor: '#ff5f52'
   },
   {
     name: 'Youtube',
     href: 'https://m.youtube.com/',
-    icon: './images/YouTube.png',
+    spriteIndex: 9,
     glowColor: '#ff0000'
   },
   {
     title: 'Tutorial Kart',
     name: 'Tutorial Kart',
     href: 'https://www.tutorialkart.com/',
-    icon: './images/Tutorial kart.png',
+    spriteIndex: 10,
     glowColor: '#a855f7'
   },
   {
     name: 'LanZou',
     href: 'https://pc.woozooo.com/',
-    icon: './images/LanZou.png',
+    spriteIndex: 11,
     glowColor: '#a4fc5a'
   },
   {
     name: 'MIUI',
     href: 'https://www.miui.com/',
-    icon: './images/XiaoMi.png',
+    spriteIndex: 12,
     glowColor: '#ff6a00'
   },
   {
     name: '酷安',
     href: 'https://www.coolapk.com/',
-    icon: './images/coolapk.png',
+    spriteIndex: 13,
     glowColor: '#0f9d58'
   },
   {
     name: '菜鸟教程',
     href: 'https://www.runoob.com/',
-    icon: './images/runoob.png',
+    spriteIndex: 14,
     glowColor: '#35c946'
   },
   {
     title: 'Android 社区',
     name: 'Android 社区',
     href: 'https://www.androidos.net.cn/',
-    icon: './images/Android.png',
+    spriteIndex: 15,
     glowColor: '#3ddc84'
   },
   {
     name: 'W3schools',
     href: 'https://www.w3school.com.cn/',
-    icon: './images/W3School.png',
+    spriteIndex: 16,
     glowColor: '#cc2c34'
   },
   {
     name: '知乎',
     href: 'https://www.zhihu.com/',
-    icon: './images/KnowAlmost.png',
+    spriteIndex: 17,
     glowColor: '#056de8'
   },
   {
     title: 'Stack Overflow',
     name: 'Stack Overflow',
     href: 'https://stackoverflow.com/',
-    icon: './images/StackOverflow.png',
+    spriteIndex: 18,
     glowColor: '#f48024'
   },
   {
     name: 'Vue',
     href: 'https://cn.vuejs.org/',
-    icon: './images/Vue.png',
+    spriteIndex: 19,
     glowColor: '#3fb27f'
   }
 ]
-
-useAssetPreloader(bookmarks.map((bookmark) => bookmark.icon))
 
 const half = Math.ceil(bookmarks.length / 2)
 const firstHalf = computed(() => bookmarks.slice(0, half))
@@ -236,6 +288,11 @@ const secondHalf = computed(() => bookmarks.slice(half))
   z-index: 2;
 }
 
+.box > a:focus-visible {
+  outline: 3px solid var(--glow-color);
+  outline-offset: 4px;
+}
+
 .icon-sweep-light {
   position: relative;
   display: grid;
@@ -256,6 +313,19 @@ const secondHalf = computed(() => bookmarks.slice(half))
   -webkit-user-select: none;
   user-select: none;
   filter: drop-shadow(0 0 0.8rem color-mix(in srgb, var(--glow-color) 40%, transparent))
+}
+
+.bookmark-sprite {
+  display: block;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  overflow: visible;
+  background-repeat: no-repeat;
+  background-size: 210px 168px;
+  -webkit-user-select: none;
+  user-select: none;
+  filter: drop-shadow(0 0 0.8rem color-mix(in srgb, var(--glow-color) 40%, transparent));
 }
 
 .icon-sweep-light::before {

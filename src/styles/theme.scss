@@ -10,6 +10,9 @@
   width: min(8vw, 48px);
   height: min(8vw, 48px);
   cursor: pointer;
+  padding: 0;
+  border: 0;
+  background: transparent;
   fill: color-mix(in srgb, var(--md-sys-color-primary-container), #fff 30%);
   transition: opacity 0.3s ease;
   opacity: 0.85;
@@ -20,6 +23,12 @@
 
   &:hover {
     opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 4px;
+    border-radius: 50%;
   }
 
   > svg {
@@ -62,6 +71,7 @@ $theme-dark: (
   }
 
   input[type="text"],
+  input[type="search"],
   textarea {
     color: map.get($theme, foreground);
     caret-color: map.get($theme, foreground);

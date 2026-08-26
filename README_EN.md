@@ -47,7 +47,7 @@
 * **Frontend Framework**: Vue3 (Composition API)
 * **Development Language**: TypeScript
 * **Styling**: SCSS + TailwindCSS
-* **Time Processing**: moment-timezone
+* **Time Processing**: Native Intl.DateTimeFormat
 * **Utility Library**: @vueuse/core
 * **Package Manager**: pnpm
 

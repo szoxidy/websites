@@ -4,6 +4,9 @@
 @use '@/styles/cursor.scss';
 @use '@/styles/font.scss';
 
+//$normal: default;
+//$click: click;
+//$beam: text;
 $normal: url("https://asset.szoxidy.com/web/cursor/normal.cur"), auto;
 $click: url("https://asset.szoxidy.com/web/cursor/click.cur"), auto;
 $beam: url("https://asset.szoxidy.com/web/cursor/beam.cur"), auto;
@@ -25,7 +28,7 @@ $box-shadow: 0 0 18px rgba(70, 70, 40, .255);
 html, body {
   margin-top: 38px;
   height: 100%;
-  width: 100vw;
+  width: 100%;
   overflow: auto;
   text-align: center;
   font-family: '霞鹜文楷 GB', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;

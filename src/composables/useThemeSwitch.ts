@@ -3,13 +3,13 @@ import {ref} from 'vue'
 /* ----------------------------------------------------------
  * 1. 状态：isNeon = true ⇒ neon/light；false ⇒ dark
  * ---------------------------------------------------------- */
-export const prefersDark = window.matchMedia('(prefers-color-scheme: light)')
+export const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
 const saved = localStorage.getItem('theme')               // "neon" | "dark" | null
-export const hasManual = saved !== null
+export const hasManual = ref(saved !== null)
 
 /** 计算初始主题：优先跟随系统 → 否则本地存储 */
 export const isNeon = ref<boolean>(
-    hasManual ? !prefersDark.matches : saved === 'neon'
+    saved !== null ? saved === 'neon' : prefersDark.matches
 )
 
 /* ⭐ 立刻把结果同步到 DOM，保证首屏正确配色 */
@@ -31,9 +31,12 @@ function updateDomClasses() {
 }
 
 /** 核心：设置主题 & 存储 & 同步 DOM */
-export function applyTheme(neon: boolean) {
+export function applyTheme(neon: boolean, persist = true) {
     isNeon.value = neon
-    localStorage.setItem('theme', neon ? 'neon' : 'dark')
+    if (persist) {
+        localStorage.setItem('theme', neon ? 'neon' : 'dark')
+        hasManual.value = true
+    }
     updateDomClasses()
 }
 
