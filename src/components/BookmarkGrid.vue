@@ -96,20 +96,20 @@ const bookmarks: Bookmark[] = [
   {
     name: 'Google',
     href: 'https://www.google.com/',
-    icon: './Google.svg',
+    icon: './images/Google.svg',
     glowColor: '#4484f3'
   },
   {
     id: 'ChatGPT',
     name: 'ChatGPT',
     href: 'https://chat.openai.com/',
-    icon: './ChatGPT.svg',
+    icon: './images/ChatGPT.svg',
     glowColor: '#bcbcbc'
   },
   {
     name: 'Claude',
     href: 'https://claude.ai/',
-    icon: './Claude.svg',
+    icon: './images/Claude.svg',
     glowColor: '#d97757'
   },
   {
@@ -146,7 +146,7 @@ const bookmarks: Bookmark[] = [
     id: 'Github',
     name: 'Github',
     href: 'https://github.com/',
-    icon: './github.svg',
+    icon: './images/github.svg',
     glowColor: '#6e40c9'
   },
   {
