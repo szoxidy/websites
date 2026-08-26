@@ -53,6 +53,7 @@ a.logo :hover {
   cursor: var(--click) !important;
 }
 
-.switch-theme :hover {
+.switch-theme,
+.switch-theme:hover {
   cursor: var(--click) !important;
 }
