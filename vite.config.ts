@@ -12,6 +12,10 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
     base: './',
     plugins: [vue(), svgLoader()],
+    server: {
+        host: '127.0.0.1',
+        port: 4174,
+    },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src'),
